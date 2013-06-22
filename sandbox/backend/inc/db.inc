@@ -1,6 +1,4 @@
 <?php
-// Create a new table with the formated movie data.
-
 //
 // generic class to all database operations
 //
