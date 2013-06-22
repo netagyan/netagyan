@@ -1,4 +1,5 @@
 <?php
+
 //
 // generic class to all database operations
 //

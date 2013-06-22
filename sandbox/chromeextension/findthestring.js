@@ -61,8 +61,11 @@ function spanaround(word) {
   $.each($("span.netagyan"), function() {
     var popup = $("<div>", {"id": "netagyanpopup"}).css("position", "absolute").css("z-index", "9999").css("top", "0");
     $(this).bind("mouseover", function() {
-      //console.log("TESTING");
-      var reqdata = {"operation":'operation1'};
+      console.log(this.textContent);
+      var reqdata = {
+        "operation":'getmpdetails',
+        "mpname"   : this.textContent
+      };
       ajaxrequest("http://localhost/backend/index.php", reqdata, displaydetails);
       //if (!($("#netagyanpopup").length > 0)) {
       //  $("body").append(popup.css("top", $(this).offset().top).css("left", $(this).offset().left).append($("<div>").text("hello")));
@@ -75,6 +78,6 @@ function spanaround(word) {
 };
 
 window.onload = function() {
-  var reqdata = {"operation":'getmlalist'};
+  var reqdata = {"operation":'getmplist'};
   ajaxrequest("http://localhost/backend/index.php", reqdata, updatewords);
 }
