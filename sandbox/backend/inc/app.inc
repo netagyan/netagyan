@@ -20,7 +20,6 @@ class app {
   public
   function __construct() {
 
-    parent::__construct();
     $this->postargs = $_POST;
     $this->getargs  = $_GET;
 
