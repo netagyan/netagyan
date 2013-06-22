@@ -29,6 +29,19 @@ class app {
   }
 
   //
+  // generic operation function
+  //
+  public
+  function operation1() {
+    $jsonarray    = array();
+    $jsonarray[0] = array(
+      'id'        => 'testing',
+      'name'      => 'kameshwar'
+    );
+    printf("%s", json_encode($jsonarray));
+  }
+
+  //
   // Main function
   //
   public
