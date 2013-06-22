@@ -8,7 +8,7 @@ require_once('db.inc');
 // Define Operations
 define ('OPERATION', 'operation');
 
-class application {
+class app {
 
   private $postargs     = null;
   private $getargs      = null;
