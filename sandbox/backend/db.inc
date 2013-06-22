@@ -13,7 +13,7 @@ class db {
   //
   //constructor
   //
-  public function __construct($configfile = "../conf/db.ini") {
+  public function __construct($configfile = "db.ini") {
     // Read from configuration file
     $this->config     = parse_ini_file($configfile);
 
