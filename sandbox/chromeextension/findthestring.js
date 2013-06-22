@@ -66,7 +66,7 @@ function spanaround(word) {
         "operation":'getmpdetails',
         "mpname"   : this.textContent
       };
-      ajaxrequest("http://localhost/backend/index.php", reqdata, displaydetails);
+      ajaxrequest("http://localhost/index.php", reqdata, displaydetails);
       //if (!($("#netagyanpopup").length > 0)) {
       //  $("body").append(popup.css("top", $(this).offset().top).css("left", $(this).offset().left).append($("<div>").text("hello")));
       //}
@@ -79,5 +79,5 @@ function spanaround(word) {
 
 window.onload = function() {
   var reqdata = {"operation":'getmplist'};
-  ajaxrequest("http://localhost/backend/index.php", reqdata, updatewords);
+  ajaxrequest("http://localhost/index.php", reqdata, updatewords);
 }
