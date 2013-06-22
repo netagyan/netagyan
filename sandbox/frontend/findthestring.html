@@ -10,14 +10,20 @@
           $(element).empty().html(htmlstring);
         })
         $.each($("span.netagyan"), function() {
+          var popup = $("<div>", {"id": "netagyanpopup"}).css("position", "absolute").css("z-index", "9999").css("top", "0");
           $(this).bind("mouseover", function() {
-            console.log('a');
+            if (!($("#netagyanpopup").length > 0)) {
+              $("body").append(popup.css("top", $(this).offset().top).css("left", $(this).offset().left).append($("<div>").text("hello")));
+            }
+          });
+          $(this).bind("mouseout", function() {
+            $(popup).empty().remove();
           });
         });
       };
 
       window.onload = function() {
-        var words = ["Narendra Modi", "All Candidates"];
+        var words = ["Narendra Modi", "All Candidates", "Indo-China"];
         $.each(words, function(index, word) {
           var queue = [document.body];
           var curr;
@@ -47,6 +53,6 @@
     <div><p>Criminal & Asset declarations as per affidavit submitted to EC at time of RS election </p></div>
     <div><p>Brihanmumbai Municipal Corporation 2012</p></div>
     <div><p>Rajya Sabha Members Register of Interest (contains details of business and financial interests of RS MPs in the form of directorships, shareholdings, remunerated activity, consulting services and professional engagements)</p></div>
-    <table><tr><td></td></tr></table>
+    <table><tr><td>Parliament convened for the Budget Session 2013 for 32 days between February 21 and May 8. Both Houses were adjourned sine die on May 8, two days ahead of the planned schedule. There was a month long recess from March 22 to April 22, while Standing Committees examined demands for grants of various Ministries. The Budget session saw frequent disruptions over a wide range of issues such as the CBI report on coal block allocations, the Indo-China border dispute, the draft report of the Joint Parliamentary Committee on 2G and corruption allegations in the Railway Ministry. The Budget session saw the passage of the Union and Railway Budgets as well as two Bills.</td></tr></table>
   </body>
 </html>
