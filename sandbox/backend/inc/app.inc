@@ -69,17 +69,17 @@ class app {
         'name'         => $values['candidate'],
         'constituency' => $values['constituency'],
         'party'        => $values['party'],
-        'cccount'      => $values['criminal_case_count'],
-        'ccconvicted'  => $values['cases_details_convicted'],
-        'ccaccused'    => $values['cases_details_accused'],
-        'serious_ipc_detail' => $values['serious_ipc_detail'],
-        'other_ipc_detail'   => $values['other_ipc_detail'],
+        //'cccount'      => $values['criminal_case_count'],
+        //'ccconvicted'  => $values['cases_details_convicted'],
+        //'ccaccused'    => $values['cases_details_accused'],
+        //'serious_ipc_detail' => $values['serious_ipc_detail'],
+        //'other_ipc_detail'   => $values['other_ipc_detail'],
         'education'          => $values['education'],
-        'movable_assets'     => $values['movable_assets'],
-        'immovable_assets'   => $values['immovable_assets'],
+        //'movable_assets'     => $values['movable_assets'],
+        //'immovable_assets'   => $values['immovable_assets'],
         'total_assets'       => $values['total_assets'],
         'liabilities'        => $values['liabilities'],
-        'pan_given'          => $values['pan_given']
+        //'pan_given'          => $values['pan_given']
       );
       $i++;
     }
