@@ -31,18 +31,43 @@ function displaydetails(data) {
   div2.append("X").attr("style","font-size:18px;cursor:pointer; float:right;").bind("click", function() {
     $("#tooltip").remove();
   }); 
-  var table   = $("<table>").appendTo(tooltip).attr("style","width:400px;");
-  var trheader= $("<tr>");
+  var table   = $("<table>").appendTo(tooltip).attr("style","width:250px;").attr("table-layout", "fixed");
   //var trdata  = $("<tr>");
   table.append(trheader);//.append(trdata);
-  $.each(data[0], function(index, value) {
-    var trheader= $("<tr>");
+  var dataarray = data[0];
+  var trheader= $("<tr>");
+  table.append(trheader);
+  trheader.append($("<td>").text("Name: "));
+  trheader.append($("<td>").text(dataarray["name"]).append($("<br/>")));
+  var trheader= $("<tr>");
+  table.append(trheader);
+  trheader.append($("<td>").text("Consituency: "));
+  trheader.append($("<td>").text(dataarray["constituency"]).append($("<br/>")));
+  var trheader= $("<tr>");
+  table.append(trheader);
+  trheader.append($("<td>").text("Party: "));
+  trheader.append($("<td>").text(dataarray["party"]).append($("<br/>")));
+  var trheader= $("<tr>");
+  table.append(trheader);
+  trheader.append($("<td>").text("Education: "));
+  trheader.append($("<td>").text(dataarray["education"]).append($("<br/>")));
+  var trheader= $("<tr>");
+  table.append(trheader);
+  trheader.append($("<td>").text("Total Assests: "));
+  trheader.append($("<td>").text(dataarray["total_assets"]).append($("<br/>")));
+  var trheader= $("<tr>");
+  table.append(trheader);
+  trheader.append($("<td>").text("Liabilities: "));
+  trheader.append($("<td>").text(dataarray["liabilities"]).append($("<br/>")));
+  //$.each(data[0], function(index, value) {
+    //var trheader= $("<tr>");
     //var trdata  = $("<tr>");
-    table.append(trheader);//.append(trdata);
-    trheader.append($("<td>").text(index + ":" + value).append($("<br/>")));
+    //table.append(trheader);//.append(trdata);
+    //trheader.append($("<td>").text(index + ": "));
+    //trheader.append($("<td>").text(value).append($("<br/>")));
     //trdata.append($("").text(value));
-  });
-  var viewmore = $("<br/><a href='#'>View More </a><br/>").attr("style", "font-size:22px;").appendTo(tooltip);
+  //});
+  //var viewmore = $("<br/><a href='#'>View More </a><br/>").attr("style", "font-size:22px;").appendTo(tooltip);
 }
 
 function updatewords(data) {
