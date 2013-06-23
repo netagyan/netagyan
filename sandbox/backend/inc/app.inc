@@ -10,9 +10,10 @@ define ('SUCCESS', 'success');
 define ('FAILURE', 'failure');
 
 // Define Operations
-define ('OPERATION', 'operation');
-define ('GETMPLIST', 'getmplist');
+define ('OPERATION'   , 'operation');
+define ('GETMPLIST'   , 'getmplist');
 define ('GETMPDETAILS', 'getmpdetails');
+define ('GETDETAILS'  , 'getdetails');
 
 class app {
 
@@ -81,7 +82,7 @@ class app {
         'pan_given'          => $values['pan_given']
       );
       $i++;
-    }  
+    }
     printf("%s", json_encode($jsonarray));
   }
 
@@ -102,6 +103,7 @@ class app {
       switch ($this->postargs[OPERATION]) {
         case GETMPLIST     : $this->getmplist(); break;
         case GETMPDETAILS  : $this->getdetails($this->postargs['mpname']); break;
+        case GETDETAILS    : $this->getdetails();
       }
     }
     else
