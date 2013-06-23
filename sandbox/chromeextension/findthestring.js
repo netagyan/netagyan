@@ -36,6 +36,24 @@ function displaydetails(data) {
   //var trdata  = $("<tr>");
   table.append(trheader);//.append(trdata);
   var dataarray = data[0];
+  table.append(trheader);
+  trheader.append($("<td>").text(Name + ": "));
+  trheader.append($("<td>").text(dataarray["name"]).append($("<br/>")));
+  table.append(trheader);
+  trheader.append($("<td>").text( Consituency+ ": "));
+  trheader.append($("<td>").text(dataarray["constituency"]).append($("<br/>")));
+  table.append(trheader);
+  trheader.append($("<td>").text(Party + ": "));
+  trheader.append($("<td>").text(dataarray["party"]).append($("<br/>")));
+  table.append(trheader);
+  trheader.append($("<td>").text(Education + ": "));
+  trheader.append($("<td>").text(dataarray["education"]).append($("<br/>")));
+  table.append(trheader);
+  trheader.append($("<td>").text(Total Assests + ": "));
+  trheader.append($("<td>").text(dataarray["total_assets"]).append($("<br/>")));
+  table.append(trheader);
+  trheader.append($("<td>").text(Liabilities + ": "));
+  trheader.append($("<td>").text(dataarray["liabilities"]).append($("<br/>")));
   $.each(data[0], function(index, value) {
     var trheader= $("<tr>");
     //var trdata  = $("<tr>");
