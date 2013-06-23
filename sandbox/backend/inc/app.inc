@@ -87,6 +87,7 @@ class app {
 
   //
   // Load default/homepage.
+  //
   private
   function loadpage() {
     $page = file_get_contents("inc/index.html");
