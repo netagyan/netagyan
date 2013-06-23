@@ -60,7 +60,7 @@ function spanaround(word) {
   })
   $.each($("span.netagyan"), function() {
     var popup = $("<div>", {"id": "netagyanpopup"}).css("position", "absolute").css("z-index", "9999").css("top", "0");
-    $(this).bind("mouseover", function() {
+    $(this).unbind().bind("click", function() {
       console.log(this.textContent);
       var reqdata = {
         "operation":'getmpdetails',
