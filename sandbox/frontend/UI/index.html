@@ -1,17 +1,65 @@
 <html>
 <head>
-	<title>Neta Gyan</title>
-	<link rel="stylesheet" type="text/css" href="style/style.css">
-	<link rel="stylesheet" type="text/css" href="style/reset.css">
-	<link href='http://fonts.googleapis.com/css?family=Rancho' rel='stylesheet' type='text/css'>
-				<link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption:400,400italic' rel='stylesheet' type='text/css' />
-				<link href='http://fonts.googleapis.com/css?family=Homenaje' rel='stylesheet' type='text/css'>
+  <title>Neta Gyan</title>
+  <link rel="stylesheet" type="text/css" href="style/style.css">
+  <link rel="stylesheet" type="text/css" href="style/reset.css">
+  <link href='http://fonts.googleapis.com/css?family=Rancho' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption:400,400italic' rel='stylesheet' type='text/css' />
+  <link href='http://fonts.googleapis.com/css?family=Homenaje' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="../graphsearch/jquery-ui.css" />
+  <script src="../graphsearch/jquery.min.js"></script>
+  <script src="../graphsearch/jquery-ui.js"></script>
+   <script>
+  $(function() {
+    function log( message ) {
+      $( "<div>" ).text( message ).prependTo( "#log" );
+      $( "#log" ).scrollTop( 0 );
+    }
+
+    $( "#city" ).autocomplete({
+      source: function( request, response ) {
+        var reqdata = {
+          'operation' : 'graphsearch',
+          'string'    : request.term
+        };
+        $.ajax({
+          url        : "http://localhost/index.php",
+          data       : reqdata,
+          type       : 'POST',
+          dataType   : 'json',
+          success: function( data ) {
+            response( $.map( data, function( item ) {
+              return {
+                //label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                //value: item.name
+                label: item,
+                value: item
+              }
+            }));
+          }
+        });
+      },
+      minLength: 2,
+      select: function( event, ui ) {
+        log( ui.item ?
+          "Selected: " + ui.item.label :
+          "Nothing selected, input was " + this.value);
+      },
+      open: function() {
+        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+      },
+      close: function() {
+        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+      }
+    });
+  });
+  </script>
 </head>
 <body>
   <header>
-  	<div class="navigation">
+    <div class="navigation">
       <ul>
-	    <li> <a href="#">Contact Us</a>
+      <li> <a href="#">Contact Us</a>
         </li>
         <li> <a href="#">Gallery</a>
         </li>
@@ -21,24 +69,29 @@
         </li>
         <li> <a href="#">Home</a>
         </li>
-	  </ul>
-	</div>
+    </ul>
+  </div>
   </header>
   <div class="container">
-<form class="form-wrapper cf">
-        <input type="text" placeholder="Search here..." required>
+  <div class="ui-widget">
+  <form class="form-wrapper cf">
+        <input type="text" placeholder="Search here..." id="city" required>
         <button type="submit">Search</button>
     </form>   
-
+</div>
     <div class="querybar">
     
     </div>
     <div class="canvas">
+     <div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
+  Result:
+  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+</div>
 
     </div>
     <div class="trending">
 
     </div>
-  </div>	
+  </div>  
 </body>
 </html>
