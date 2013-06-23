@@ -6,7 +6,7 @@
   "version"    : "1.0",
 
   "content_scripts": [ {
-    "matches"  : ["http://*/*"],
+    "matches"  : ["http://*/*"], 
     "js"       : ["jquery.js", "findthestring.js"],
     "run_at"   : "document_end"
   } ],
