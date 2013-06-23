@@ -55,7 +55,7 @@ function updatewords(data) {
 function spanaround(word) {
   $.each(elements, function(index, element) {;
     var stringsarray = $(element).html().toString();
-    var htmlstring = stringsarray.replace(new RegExp(word, "gi"), ("<span class='netagyan'>" + word + "</span>"));
+    var htmlstring = stringsarray.replace(new RegExp(word, "gi"), ("<span class='netagyan' style='text-transform:capitalize;'>" + word + "</span>"));
     $(element).empty().html(htmlstring);
   })
   $.each($("span.netagyan"), function() {
