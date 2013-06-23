@@ -13,7 +13,7 @@ function ajaxrequest(requrl, reqdata, successcallback) {
     dataType   : 'json',
     crossDomain: true,
     success    : function(data) {
-      successcallback(data);
+      successcallback(data);;
     },
     error      : function(error) {
       console.log("ERROR");
@@ -24,14 +24,17 @@ function ajaxrequest(requrl, reqdata, successcallback) {
 function displaydetails(data) {
   console.log("displaydetails");
   console.log(data);
-  var tooltip = $("<div id='tooltip'>").appendTo("body");
+  var tooltip = $("<div id='tooltip'>").appendTo("body").attr("style", "position:absolute;top:0;");
   var table   = $("<table>").appendTo(tooltip).attr("style","width:400px;");
   var trheader= $("<tr>");
-  var trdata  = $("<tr><br/>");
-  table.append(trheader).append(trdata);
+  //var trdata  = $("<tr>");
+  table.append(trheader);//.append(trdata);
   $.each(data[0], function(index, value) {
-    trheader.append($("<td>").text(index));
-    trdata.append($("<td>").text(value));
+    var trheader= $("<tr>");
+    //var trdata  = $("<tr>");
+    table.append(trheader);//.append(trdata);
+    trheader.append($("<td>").text(index + ":" + value).append($("<br/>")));
+    //trdata.append($("").text(value));
   });
 }
 
@@ -65,6 +68,7 @@ function spanaround(word) {
   $.each(elements, function(index, element) {;
     var stringsarray = $(element).html().toString();
     var htmlstring = stringsarray.replace(new RegExp(word, "gi"), ("<span class='netagyan'>" + word + "</span>" + "<img class=\"explore\" src='http://www.usask.ca/fsd/images/icons/help.gif'>"));
+    var htmlstring = stringsarray.replace(new RegExp(word, "gi"), ("<span class='netagyan' style='text-transform:capitalize;'>" + word + "</span>"));
     $(element).empty().html(htmlstring);
   })
   $.each($("span.netagyan"), function() {
