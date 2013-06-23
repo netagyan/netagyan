@@ -1,10 +1,11 @@
 {
   "manifest_version": 2,
 
-  "name"       : "testing",
-  "description": "console.log.",
+  "name"       : "DataCheck",
+  "description": "Fetch important information from available Public data",
   "version"    : "1.0",
-
+  "icons": { "16": "16x16.png",
+             "48": "48x48.png" },
   "content_scripts": [ {
     "matches"  : ["http://*/*"], 
     "js"       : ["jquery.js", "findthestring.js"],
