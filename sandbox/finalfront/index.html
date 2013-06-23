@@ -6,9 +6,9 @@
   <link href='http://fonts.googleapis.com/css?family=Rancho' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption:400,400italic' rel='stylesheet' type='text/css' />
   <link href='http://fonts.googleapis.com/css?family=Homenaje' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="../graphsearch/jquery-ui.css" />
-  <script src="../graphsearch/jquery.min.js"></script>
-  <script src="../graphsearch/jquery-ui.js"></script>
+  <link rel="stylesheet" href="jquery-ui.css" />
+  <script src="jquery.min.js"></script>
+  <script src="jquery-ui.js"></script>
    <script>
   $(function() {
     function log( message ) {
@@ -30,10 +30,9 @@
           success: function( data ) {
             response( $.map( data, function( item ) {
               return {
-                //label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                //value: item.name
-                label: item,
-                value: item
+                label: item['question'],
+                value: item['question'],
+                query: item['query']
               }
             }));
           }
@@ -41,8 +40,22 @@
       },
       minLength: 2,
       select: function( event, ui ) {
+        var reqdata = {
+          'operation' : 'runquery',
+          'query'    : ui.item.query
+        };
+        $.ajax({
+          url        : "http://localhost/index.php",
+          data       : reqdata,
+          type       : 'POST',
+          dataType   : 'json',
+          success: function( data ) { 
+            console.log(data);
+          }
+        });
+
         log( ui.item ?
-          "Selected: " + ui.item.label :
+          "Selected " + ui.item.label :
           "Nothing selected, input was " + this.value);
       },
       open: function() {
