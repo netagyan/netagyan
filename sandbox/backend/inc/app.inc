@@ -10,9 +10,11 @@ define ('SUCCESS', 'success');
 define ('FAILURE', 'failure');
 
 // Define Operations
-define ('OPERATION', 'operation');
-define ('GETMPLIST', 'getmplist');
-define ('GETMPDETAILS', 'getmpdetails');
+define ('OPERATION'     , 'operation');
+define ('GETMPLIST'     , 'getmplist');
+define ('GETMPDETAILS'  , 'getmpdetails');
+define ('GETALLDETAILS' , 'getalldetails');
+define ('GRAPHSEARCH'   , 'graphsearch');
 
 class app {
 
@@ -36,7 +38,23 @@ class app {
   //
   // Return MP list
   //
-  private 
+  private
+  function graphsearch($name) {
+    $query           = "select candidate from details where candidate like '%" . $name . "%'";
+    $result          = $this->dbconnection->execute($query);
+    $jsonarray       = array();
+    $i               = 0;
+    while ( ($values = mysql_fetch_assoc($result)) ) {
+      $jsonarray[$i] = $values['candidate'];
+      $i++;
+    }
+    printf("%s", json_encode($jsonarray));
+  }
+
+  //
+  // Return MP list
+  //
+  private
   function getmplist() {
     $query           = "select candidate from details";
     $result          = $this->dbconnection->execute($query);
@@ -45,14 +63,14 @@ class app {
     while ( ($values = mysql_fetch_assoc($result)) ) {
       $jsonarray[$i] = $values['candidate'];
       $i++;
-    } 
+    }
     printf("%s", json_encode($jsonarray));
   }
 
   //
   // Return politician details
   //
-  private 
+  private
   function getdetails($name = "all") {
     if ( $name == "all" ) {
       $query         = "select * from details";
@@ -81,8 +99,17 @@ class app {
         'pan_given'          => $values['pan_given']
       );
       $i++;
-    }  
+    }
     printf("%s", json_encode($jsonarray));
+  }
+
+  //
+  // Load default/homepage.
+  //
+  private
+  function loadpage() {
+    $page = file_get_contents("inc/index.html");
+    printf("%s", $page);
   }
 
   //
@@ -92,10 +119,14 @@ class app {
   function run() {
     if (isset($this->postargs[OPERATION])) {
       switch ($this->postargs[OPERATION]) {
-        case GETMPLIST     : $this->getmplist(); break;
-        case GETMPDETAILS  : $this->getdetails($this->postargs['mpname']); break;
+        case GETMPLIST        : $this->getmplist(); break;
+        case GETMPDETAILS     : $this->getdetails($this->postargs['mpname']); break;
+        case GETALLDETAILS    : $this->getdetails(); break;
+        case GRAPHSEARCH      : $this->graphsearch($this->postargs['string']); break;
       }
     }
+    else
+      $this->loadpage();
     return SUCCESS;
   }
 }
