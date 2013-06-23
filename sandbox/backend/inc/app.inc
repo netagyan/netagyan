@@ -41,14 +41,17 @@ class app {
   //
   private 
   function graphsearch($name) {
-    $query           = "select candidate from details where candidate like '%" . $name . "%'";
+    $query           = "select * from query where question like '%" . $name . "%'";
     $result          = $this->dbconnection->execute($query);
     $jsonarray       = array();
     $i               = 0;
     while ( ($values = mysql_fetch_assoc($result)) ) {
-      $jsonarray[$i] = $values['candidate'];
+      $jsonarray[$i] = array(
+        'question'   : $values['question'],
+        'query'      : $values['query']
+      );
       $i++;
-    } 
+    }
     printf("%s", json_encode($jsonarray));
   }
 
