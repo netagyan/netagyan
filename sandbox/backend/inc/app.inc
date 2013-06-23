@@ -86,6 +86,14 @@ class app {
   }
 
   //
+  // Load default/homepage.
+  private
+  function loadpage() {
+    $page = file_get_contents("inc/index.html");
+    printf("%s", $page);
+  }
+
+  //
   // Main function
   //
   public
@@ -96,6 +104,8 @@ class app {
         case GETMPDETAILS  : $this->getdetails($this->postargs['mpname']); break;
       }
     }
+    else
+      $this->loadpage();
     return SUCCESS;
   }
 }
