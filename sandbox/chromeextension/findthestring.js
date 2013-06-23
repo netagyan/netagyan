@@ -31,7 +31,7 @@ function displaydetails(data) {
   div2.append("X").attr("style","font-size:18px;cursor:pointer; float:right;").bind("click", function() {
     $("#tooltip").remove();
   }); 
-  var table   = $("<table>").appendTo(tooltip).attr("style","width:400px;").attr("table-layout", "fixed");
+  var table   = $("<table>").appendTo(tooltip).attr("style","width:250px;").attr("table-layout", "fixed");
   var trheader= $("<tr>");
   //var trdata  = $("<tr>");
   table.append(trheader);//.append(trdata);
@@ -39,7 +39,7 @@ function displaydetails(data) {
     var trheader= $("<tr>");
     //var trdata  = $("<tr>");
     table.append(trheader);//.append(trdata);
-    trheader.append($("<td>").text(index));
+    trheader.append($("<td>").text(index + ": "));
     trheader.append($("<td>").text(value).append($("<br/>")));
     //trdata.append($("").text(value));
   });
