@@ -54,14 +54,14 @@ function displaydetails(data) {
   table.append(trheader);
   trheader.append($("<td>").text(Liabilities + ": "));
   trheader.append($("<td>").text(dataarray["liabilities"]).append($("<br/>")));
-  $.each(data[0], function(index, value) {
-    var trheader= $("<tr>");
+  //$.each(data[0], function(index, value) {
+    //var trheader= $("<tr>");
     //var trdata  = $("<tr>");
-    table.append(trheader);//.append(trdata);
-    trheader.append($("<td>").text(index + ": "));
-    trheader.append($("<td>").text(value).append($("<br/>")));
+    //table.append(trheader);//.append(trdata);
+    //trheader.append($("<td>").text(index + ": "));
+    //trheader.append($("<td>").text(value).append($("<br/>")));
     //trdata.append($("").text(value));
-  });
+  //});
   //var viewmore = $("<br/><a href='#'>View More </a><br/>").attr("style", "font-size:22px;").appendTo(tooltip);
 }
 
