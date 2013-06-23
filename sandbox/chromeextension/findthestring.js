@@ -42,7 +42,7 @@ function displaydetails(data) {
     trheader.append($("<td>").text(index + ":" + value).append($("<br/>")));
     //trdata.append($("").text(value));
   });
-  var viewmore = $("<br/><a href='#'>View More </a><br/>").attr("style", "font-size:22px;").appendTo(tooltip);
+  //var viewmore = $("<br/><a href='#'>View More </a><br/>").attr("style", "font-size:22px;").appendTo(tooltip);
 }
 
 function updatewords(data) {
