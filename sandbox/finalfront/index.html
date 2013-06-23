@@ -49,14 +49,24 @@
           data       : reqdata,
           type       : 'POST',
           dataType   : 'json',
-          success: function( data ) { 
-            console.log(data);
+          success: function( response ) { 
+            console.log(typeof response);
+            var table = $("<table>");
+            $(".canvas").append(table);
+            $.each(response, function(count, obj) {
+               $.each(obj, function(index, value) {
+                 var tr = $("<tr>");
+                 table.append(tr);
+                 tr.append($("<td>").text(index + ": "));
+                 tr.append($("<td>").text(value));
+               });
+            });
           }
         });
 
-        log( ui.item ?
-          "Selected " + ui.item.label :
-          "Nothing selected, input was " + this.value);
+        //log( ui.item ?
+          //"Selected " + ui.item.label :
+          //"Nothing selected, input was " + this.value);
       },
       open: function() {
         $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
@@ -92,19 +102,12 @@
         <button type="submit">Search</button>
     </form>   
 </div>
-    <div class="querybar">
     
-    </div>
     <div class="canvas">
-     <div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
-  Result:
-  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
-</div>
+     
 
     </div>
-    <div class="trending">
-
-    </div>
+    
   </div>  
 </body>
 </html>
