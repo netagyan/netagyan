@@ -67,9 +67,6 @@ function spanaround(word) {
         "mpname"   : this.textContent
       };
       ajaxrequest("http://localhost/index.php", reqdata, displaydetails);
-      //if (!($("#netagyanpopup").length > 0)) {
-      //  $("body").append(popup.css("top", $(this).offset().top).css("left", $(this).offset().left).append($("<div>").text("hello")));
-      //}
     });
     $(this).bind("mouseout", function() {
       $(popup).empty().remove();
