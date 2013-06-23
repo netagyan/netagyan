@@ -47,8 +47,8 @@ class app {
     $i               = 0;
     while ( ($values = mysql_fetch_assoc($result)) ) {
       $jsonarray[$i] = array(
-        'question'   : $values['question'],
-        'query'      : $values['query']
+        'question'   => $values['question'],
+        'query'      => $values['query']
       );
       $i++;
     }
@@ -73,6 +73,7 @@ class app {
 
   private 
   function runquery($query) {
+    error_log($query);
     $result          = $this->dbconnection->execute($query);
     $jsonarray       = array();
     $i               = 0;
