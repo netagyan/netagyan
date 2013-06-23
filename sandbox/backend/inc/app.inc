@@ -10,10 +10,10 @@ define ('SUCCESS', 'success');
 define ('FAILURE', 'failure');
 
 // Define Operations
-define ('OPERATION'   , 'operation');
-define ('GETMPLIST'   , 'getmplist');
-define ('GETMPDETAILS', 'getmpdetails');
-define ('GETDETAILS'  , 'getdetails');
+define ('OPERATION'     , 'operation');
+define ('GETMPLIST'     , 'getmplist');
+define ('GETMPDETAILS'  , 'getmpdetails');
+define ('GETALLDETAILS' , 'getalldetails');
 
 class app {
 
@@ -101,9 +101,9 @@ class app {
   function run() {
     if (isset($this->postargs[OPERATION])) {
       switch ($this->postargs[OPERATION]) {
-        case GETMPLIST     : $this->getmplist(); break;
-        case GETMPDETAILS  : $this->getdetails($this->postargs['mpname']); break;
-        case GETDETAILS    : $this->getdetails();
+        case GETMPLIST        : $this->getmplist(); break;
+        case GETMPDETAILS     : $this->getdetails($this->postargs['mpname']); break;
+        case GETALLDETAILS    : $this->getdetails();
       }
     }
     else
