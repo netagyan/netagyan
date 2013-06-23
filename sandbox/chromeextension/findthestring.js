@@ -39,8 +39,8 @@ function displaydetails(data) {
     var trheader= $("<tr>");
     //var trdata  = $("<tr>");
     table.append(trheader);//.append(trdata);
-    trheader.append($("<td>").text(index + ": "));
-    trheader.append($("<td>").text(value).append($("<br/>")));
+    trheader.append($("<td>").text(index + ": ").attr("style", "float: right"));
+    trheader.append($("<td>").text(value).attr("style", "float: left").append($("<br/>")));
     //trdata.append($("").text(value));
   });
   //var viewmore = $("<br/><a href='#'>View More </a><br/>").attr("style", "font-size:22px;").appendTo(tooltip);
